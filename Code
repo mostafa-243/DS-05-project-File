@@ -1,0 +1,56 @@
+from mendeleev import element
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init(autoreset=True)
+
+def search_element():
+    """Search for an element by its symbol."""
+    symbol = input(Fore.YELLOW + "Enter the symbol of the element (e.g., H, O, Fe): ").strip().capitalize()
+    try:
+        elem = element(symbol)
+        print(Fore.CYAN + "\nElement Details:")
+        print(f"{Fore.GREEN}Name: {Fore.RESET}{elem.name}")
+        print(f"{Fore.GREEN}Symbol: {Fore.RESET}{elem.symbol}")
+        print(f"{Fore.GREEN}Atomic Number: {Fore.RESET}{elem.atomic_number}")
+        print(f"{Fore.GREEN}Atomic Weight: {Fore.RESET}{elem.atomic_weight}")
+        print(f"{Fore.GREEN}Group: {Fore.RESET}{elem.group_id}")
+        print(f"{Fore.GREEN}Period: {Fore.RESET}{elem.period}")
+        print(f"{Fore.GREEN}Category (Block): {Fore.RESET}{elem.block}")
+        print(f"{Fore.GREEN}Electronegativity: {Fore.RESET}{elem.en_pauling}")
+        print(f"{Fore.GREEN}Atomic Radius: {Fore.RESET}{elem.atomic_radius} pm")
+        print(f"{Fore.GREEN}Electron Configuration: {Fore.RESET}{elem.ec_conf}")
+        print(f"{Fore.GREEN}Melting Point: {Fore.RESET}{elem.melting_point} K")
+        print(f"{Fore.GREEN}Boiling Point: {Fore.RESET}{elem.boiling_point} K\n")
+    except Exception as e:
+        print(Fore.RED + "Element not found! Please check the symbol and try again.\n")
+
+def view_periodic_table_info():
+    """Show a summary of the periodic table."""
+    print(Fore.CYAN + "\nPeriodic Table Overview:")
+    print(Fore.RESET + "This program allows you to search for chemical elements by their symbol.")
+    print("You can get details such as name, atomic number, weight, group, and more.")
+    print("Example symbols: H (Hydrogen), O (Oxygen), Fe (Iron).\n")
+
+def main():
+    """Main menu for the periodic table project."""
+    while True:
+        print(Fore.MAGENTA + "Periodic Table Project")
+        print("1. Search Element by Symbol")
+        print("2. View Periodic Table Info")
+        print("3. Exit")
+        choice = input(Fore.YELLOW + "Enter your choice: ").strip()
+
+        if choice == "1":
+            search_element()
+        elif choice == "2":
+            view_periodic_table_info()
+        elif choice == "3":
+            print(Fore.GREEN + "Exiting program. Goodbye! Thank you for Visiting.")
+            break
+        else:
+            print(Fore.RED + "Invalid choice! Please try again.\n")
+
+# Run the program
+if __name__ == "__main__":
+    main()
